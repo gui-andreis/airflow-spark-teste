@@ -3,8 +3,8 @@ version: "3.8"
 x-airflow-common: &airflow-common
   build:
     context: ..
-    user: "${AIRFLOW_UID}:0"
     dockerfile: docker/Dockerfile
+  user: "${AIRFLOW_UID}:0"
   environment:
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://teste:12345@spark-alura-teste-postgres/spark_alura_airflow
@@ -18,6 +18,9 @@ x-airflow-common: &airflow-common
     - ../airflow/plugins:/opt/airflow/plugins
     - ../data:/opt/airflow/data
     - ../src:/opt/airflow/src
+    - ../airflow/hook:/opt/airflow/hook
+    - ../airflow/operators:/opt/airflow/operators
+    - ../data_hook:/opt/data_hook
   depends_on:
     - postgres
 
@@ -30,7 +33,7 @@ services:
       POSTGRES_PASSWORD: 12345
       POSTGRES_DB: spark_alura_airflow
     ports:
-      - "5432:5432"
+      - "5434:5432"
     volumes:
       - spark_alura_teste_postgres_data:/var/lib/postgresql/data
 
@@ -51,8 +54,9 @@ services:
   airflow-init:
     <<: *airflow-common
     container_name: spark-alura-teste-airflow-init
+    user: "0:0" 
     entrypoint: /bin/bash
-    command: -c "airflow db init && airflow users create --username admin --password admin --firstname admin --lastname admin --role Admin --email admin@example.com"
+    command: -c "airflow db init && airflow users create --username admin --password ${AIRFLOW_PASSWORD} --firstname admin --lastname admin --role Admin --email admin@example.com"
 
 volumes:
   spark_alura_teste_postgres_data:
