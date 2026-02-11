@@ -1,0 +1,58 @@
+version: "3.8"
+
+x-airflow-common: &airflow-common
+  build:
+    context: ..
+    user: "${AIRFLOW_UID}:0"
+    dockerfile: docker/Dockerfile
+  environment:
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://teste:12345@spark-alura-teste-postgres/spark_alura_airflow
+    AIRFLOW__CORE__FERNET_KEY: ""
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
+    AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+    AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "true"
+  volumes:
+    - ../airflow/dags:/opt/airflow/dags
+    - ../airflow/logs:/opt/airflow/logs
+    - ../airflow/plugins:/opt/airflow/plugins
+    - ../data:/opt/airflow/data
+    - ../src:/opt/airflow/src
+  depends_on:
+    - postgres
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: spark-alura-teste-postgres
+    environment:
+      POSTGRES_USER: teste
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: spark_alura_airflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - spark_alura_teste_postgres_data:/var/lib/postgresql/data
+
+  airflow-webserver:
+    <<: *airflow-common
+    container_name: spark-alura-teste-airflow-webserver
+    command: webserver
+    ports:
+      - "8081:8080"
+    restart: always
+
+  airflow-scheduler:
+    <<: *airflow-common
+    container_name: spark-alura-teste-airflow-scheduler
+    command: scheduler
+    restart: always
+
+  airflow-init:
+    <<: *airflow-common
+    container_name: spark-alura-teste-airflow-init
+    entrypoint: /bin/bash
+    command: -c "airflow db init && airflow users create --username admin --password admin --firstname admin --lastname admin --role Admin --email admin@example.com"
+
+volumes:
+  spark_alura_teste_postgres_data:
