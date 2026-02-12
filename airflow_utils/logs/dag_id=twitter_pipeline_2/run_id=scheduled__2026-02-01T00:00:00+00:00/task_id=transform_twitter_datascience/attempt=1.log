@@ -1,0 +1,1267 @@
+[2026-02-12T20:32:40.809+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-02-12T20:32:40.825+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: twitter_pipeline_2.transform_twitter_datascience scheduled__2026-02-01T00:00:00+00:00 [queued]>
+[2026-02-12T20:32:40.830+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: twitter_pipeline_2.transform_twitter_datascience scheduled__2026-02-01T00:00:00+00:00 [queued]>
+[2026-02-12T20:32:40.830+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-02-12T20:32:40.839+0000] {taskinstance.py:2330} INFO - Executing <Task(SparkSubmitOperator): transform_twitter_datascience> on 2026-02-01 00:00:00+00:00
+[2026-02-12T20:32:40.844+0000] {standard_task_runner.py:64} INFO - Started process 480 to run task
+[2026-02-12T20:32:40.847+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'twitter_pipeline_2', 'transform_twitter_datascience', 'scheduled__2026-02-01T00:00:00+00:00', '--job-id', '70', '--raw', '--subdir', 'DAGS_FOLDER/dag2.py', '--cfg-path', '/tmp/tmpt_610y85']
+[2026-02-12T20:32:40.849+0000] {standard_task_runner.py:91} INFO - Job 70: Subtask transform_twitter_datascience
+[2026-02-12T20:32:40.891+0000] {task_command.py:426} INFO - Running <TaskInstance: twitter_pipeline_2.transform_twitter_datascience scheduled__2026-02-01T00:00:00+00:00 [running]> on host 649004db3ede
+[2026-02-12T20:32:40.957+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='twitter_pipeline_2' AIRFLOW_CTX_TASK_ID='transform_twitter_datascience' AIRFLOW_CTX_EXECUTION_DATE='2026-02-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-02-01T00:00:00+00:00'
+[2026-02-12T20:32:40.958+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-02-12T20:32:40.966+0000] {base.py:84} INFO - Using connection ID 'spark_default' for task execution.
+[2026-02-12T20:32:40.967+0000] {spark_submit.py:341} INFO - Spark-Submit cmd: spark-submit --master local --name twitter_transformation --queue root.default /opt/airflow/src/spark/transformation.py --src /opt/data_lake/twitter_posts_raw --dest /opt/airflow/data/silver
+[2026-02-12T20:32:42.917+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:42 INFO SparkContext: Running Spark version 3.4.1
+[2026-02-12T20:32:42.954+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:42 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2026-02-12T20:32:43.008+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO ResourceUtils: ==============================================================
+[2026-02-12T20:32:43.008+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2026-02-12T20:32:43.008+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO ResourceUtils: ==============================================================
+[2026-02-12T20:32:43.009+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO SparkContext: Submitted application: twitter_transformation
+[2026-02-12T20:32:43.022+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2026-02-12T20:32:43.027+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO ResourceProfile: Limiting resource is cpu
+[2026-02-12T20:32:43.027+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2026-02-12T20:32:43.057+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO SecurityManager: Changing view acls to: default
+[2026-02-12T20:32:43.057+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO SecurityManager: Changing modify acls to: default
+[2026-02-12T20:32:43.058+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO SecurityManager: Changing view acls groups to:
+[2026-02-12T20:32:43.058+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO SecurityManager: Changing modify acls groups to:
+[2026-02-12T20:32:43.058+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: default; groups with view permissions: EMPTY; users with modify permissions: default; groups with modify permissions: EMPTY
+[2026-02-12T20:32:43.215+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO Utils: Successfully started service 'sparkDriver' on port 43173.
+[2026-02-12T20:32:43.235+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO SparkEnv: Registering MapOutputTracker
+[2026-02-12T20:32:43.266+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO SparkEnv: Registering BlockManagerMaster
+[2026-02-12T20:32:43.279+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2026-02-12T20:32:43.279+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2026-02-12T20:32:43.283+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+[2026-02-12T20:32:43.297+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-3d70be3b-5dc3-41b4-9592-8ff0a0e9e844
+[2026-02-12T20:32:43.309+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+[2026-02-12T20:32:43.321+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO SparkEnv: Registering OutputCommitCoordinator
+[2026-02-12T20:32:43.412+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+[2026-02-12T20:32:43.445+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+[2026-02-12T20:32:43.508+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO Executor: Starting executor ID driver on host 649004db3ede
+[2026-02-12T20:32:43.512+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+[2026-02-12T20:32:43.523+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 35641.
+[2026-02-12T20:32:43.523+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO NettyBlockTransferService: Server created on 649004db3ede:35641
+[2026-02-12T20:32:43.524+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+[2026-02-12T20:32:43.528+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 649004db3ede, 35641, None)
+[2026-02-12T20:32:43.530+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO BlockManagerMasterEndpoint: Registering block manager 649004db3ede:35641 with 434.4 MiB RAM, BlockManagerId(driver, 649004db3ede, 35641, None)
+[2026-02-12T20:32:43.531+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 649004db3ede, 35641, None)
+[2026-02-12T20:32:43.532+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 649004db3ede, 35641, None)
+[2026-02-12T20:32:43.793+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+[2026-02-12T20:32:43.798+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:43 INFO SharedState: Warehouse path is 'file:/opt/airflow/spark-warehouse'.
+[2026-02-12T20:32:44.279+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:44 INFO InMemoryFileIndex: It took 35 ms to list leaf files for 1 paths.
+[2026-02-12T20:32:44.329+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:44 INFO InMemoryFileIndex: It took 8 ms to list leaf files for 12 paths.
+[2026-02-12T20:32:45.504+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO FileSourceStrategy: Pushed Filters:
+[2026-02-12T20:32:45.511+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO FileSourceStrategy: Post-Scan Filters:
+[2026-02-12T20:32:45.674+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 199.2 KiB, free 434.2 MiB)
+[2026-02-12T20:32:45.723+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 34.2 KiB, free 434.2 MiB)
+[2026-02-12T20:32:45.726+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on 649004db3ede:35641 (size: 34.2 KiB, free: 434.4 MiB)
+[2026-02-12T20:32:45.730+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO SparkContext: Created broadcast 0 from json at NativeMethodAccessorImpl.java:0
+[2026-02-12T20:32:45.737+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO FileSourceScanExec: Planning scan with bin packing, max size: 50392014 bytes, open cost is considered as scanning 4194304 bytes.
+[2026-02-12T20:32:45.836+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO SparkContext: Starting job: json at NativeMethodAccessorImpl.java:0
+[2026-02-12T20:32:45.845+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO DAGScheduler: Got job 0 (json at NativeMethodAccessorImpl.java:0) with 1 output partitions
+[2026-02-12T20:32:45.846+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO DAGScheduler: Final stage: ResultStage 0 (json at NativeMethodAccessorImpl.java:0)
+[2026-02-12T20:32:45.846+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO DAGScheduler: Parents of final stage: List()
+[2026-02-12T20:32:45.846+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO DAGScheduler: Missing parents: List()
+[2026-02-12T20:32:45.849+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[3] at json at NativeMethodAccessorImpl.java:0), which has no missing parents
+[2026-02-12T20:32:45.899+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 15.0 KiB, free 434.2 MiB)
+[2026-02-12T20:32:45.904+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 7.2 KiB, free 434.2 MiB)
+[2026-02-12T20:32:45.905+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on 649004db3ede:35641 (size: 7.2 KiB, free: 434.4 MiB)
+[2026-02-12T20:32:45.906+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1535
+[2026-02-12T20:32:45.914+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[3] at json at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+[2026-02-12T20:32:45.915+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO TaskSchedulerImpl: Adding task set 0.0 with 1 tasks resource profile 0
+[2026-02-12T20:32:45.947+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (649004db3ede, executor driver, partition 0, PROCESS_LOCAL, 9196 bytes)
+[2026-02-12T20:32:45.954+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:45 INFO Executor: Running task 0.0 in stage 0.0 (TID 0)
+[2026-02-12T20:32:46.031+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-11.json, range: 0-5524, partition values: [empty row]
+[2026-02-12T20:32:46.179+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO CodeGenerator: Code generated in 123.998325 ms
+[2026-02-12T20:32:46.208+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-08.json, range: 0-5455, partition values: [empty row]
+[2026-02-12T20:32:46.215+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-10.json, range: 0-5426, partition values: [empty row]
+[2026-02-12T20:32:46.219+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-07.json, range: 0-5394, partition values: [empty row]
+[2026-02-12T20:32:46.223+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-09.json, range: 0-5376, partition values: [empty row]
+[2026-02-12T20:32:46.226+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-02.json, range: 0-5314, partition values: [empty row]
+[2026-02-12T20:32:46.229+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-05.json, range: 0-5311, partition values: [empty row]
+[2026-02-12T20:32:46.232+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-04.json, range: 0-5302, partition values: [empty row]
+[2026-02-12T20:32:46.235+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-03.json, range: 0-5250, partition values: [empty row]
+[2026-02-12T20:32:46.238+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-06.json, range: 0-5026, partition values: [empty row]
+[2026-02-12T20:32:46.240+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-01.json, range: 0-3511, partition values: [empty row]
+[2026-02-12T20:32:46.242+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-12.json, range: 0-3477, partition values: [empty row]
+[2026-02-12T20:32:46.254+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO Executor: Finished task 0.0 in stage 0.0 (TID 0). 2606 bytes result sent to driver
+[2026-02-12T20:32:46.261+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 321 ms on 649004db3ede (executor driver) (1/1)
+[2026-02-12T20:32:46.262+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool
+[2026-02-12T20:32:46.271+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO DAGScheduler: ResultStage 0 (json at NativeMethodAccessorImpl.java:0) finished in 0.409 s
+[2026-02-12T20:32:46.273+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+[2026-02-12T20:32:46.273+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO TaskSchedulerImpl: Killing all running tasks in stage 0: Stage finished
+[2026-02-12T20:32:46.274+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO DAGScheduler: Job 0 finished: json at NativeMethodAccessorImpl.java:0, took 0.437558 s
+[2026-02-12T20:32:46.528+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileSourceStrategy: Pushed Filters:
+[2026-02-12T20:32:46.529+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileSourceStrategy: Post-Scan Filters:
+[2026-02-12T20:32:46.576+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO ParquetUtils: Using default output committer for Parquet: org.apache.parquet.hadoop.ParquetOutputCommitter
+[2026-02-12T20:32:46.590+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+[2026-02-12T20:32:46.591+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+[2026-02-12T20:32:46.591+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO SQLHadoopMapReduceCommitProtocol: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+[2026-02-12T20:32:46.591+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+[2026-02-12T20:32:46.591+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+[2026-02-12T20:32:46.592+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+[2026-02-12T20:32:46.684+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO CodeGenerator: Code generated in 42.652501 ms
+[2026-02-12T20:32:46.688+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 199.1 KiB, free 434.0 MiB)
+[2026-02-12T20:32:46.695+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 34.1 KiB, free 433.9 MiB)
+[2026-02-12T20:32:46.697+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on 649004db3ede:35641 (size: 34.1 KiB, free: 434.3 MiB)
+[2026-02-12T20:32:46.697+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO SparkContext: Created broadcast 2 from parquet at NativeMethodAccessorImpl.java:0
+[2026-02-12T20:32:46.703+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileSourceScanExec: Planning scan with bin packing, max size: 50392014 bytes, open cost is considered as scanning 4194304 bytes.
+[2026-02-12T20:32:46.743+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO SparkContext: Starting job: parquet at NativeMethodAccessorImpl.java:0
+[2026-02-12T20:32:46.744+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO DAGScheduler: Got job 1 (parquet at NativeMethodAccessorImpl.java:0) with 1 output partitions
+[2026-02-12T20:32:46.745+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO DAGScheduler: Final stage: ResultStage 1 (parquet at NativeMethodAccessorImpl.java:0)
+[2026-02-12T20:32:46.745+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO DAGScheduler: Parents of final stage: List()
+[2026-02-12T20:32:46.745+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO DAGScheduler: Missing parents: List()
+[2026-02-12T20:32:46.745+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[7] at parquet at NativeMethodAccessorImpl.java:0), which has no missing parents
+[2026-02-12T20:32:46.763+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO MemoryStore: Block broadcast_3 stored as values in memory (estimated size 236.4 KiB, free 433.7 MiB)
+[2026-02-12T20:32:46.771+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 86.4 KiB, free 433.6 MiB)
+[2026-02-12T20:32:46.772+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on 649004db3ede:35641 (size: 86.4 KiB, free: 434.2 MiB)
+[2026-02-12T20:32:46.772+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1535
+[2026-02-12T20:32:46.773+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 1 (MapPartitionsRDD[7] at parquet at NativeMethodAccessorImpl.java:0) (first 15 tasks are for partitions Vector(0))
+[2026-02-12T20:32:46.773+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO TaskSchedulerImpl: Adding task set 1.0 with 1 tasks resource profile 0
+[2026-02-12T20:32:46.774+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1) (649004db3ede, executor driver, partition 0, PROCESS_LOCAL, 9196 bytes)
+[2026-02-12T20:32:46.775+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO Executor: Running task 0.0 in stage 1.0 (TID 1)
+[2026-02-12T20:32:46.784+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO BlockManagerInfo: Removed broadcast_1_piece0 on 649004db3ede:35641 in memory (size: 7.2 KiB, free: 434.2 MiB)
+[2026-02-12T20:32:46.789+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO BlockManagerInfo: Removed broadcast_0_piece0 on 649004db3ede:35641 in memory (size: 34.2 KiB, free: 434.3 MiB)
+[2026-02-12T20:32:46.821+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO CodeGenerator: Code generated in 9.415076 ms
+[2026-02-12T20:32:46.834+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO CodeGenerator: Code generated in 6.628822 ms
+[2026-02-12T20:32:46.843+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+[2026-02-12T20:32:46.843+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+[2026-02-12T20:32:46.843+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO SQLHadoopMapReduceCommitProtocol: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+[2026-02-12T20:32:46.843+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+[2026-02-12T20:32:46.843+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+[2026-02-12T20:32:46.844+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.parquet.hadoop.ParquetOutputCommitter
+[2026-02-12T20:32:46.867+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO CodeGenerator: Code generated in 14.36308 ms
+[2026-02-12T20:32:46.868+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-11.json, range: 0-5524, partition values: [empty row]
+[2026-02-12T20:32:46.889+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO CodeGenerator: Code generated in 14.630347 ms
+[2026-02-12T20:32:46.920+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-08.json, range: 0-5455, partition values: [empty row]
+[2026-02-12T20:32:46.928+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-10.json, range: 0-5426, partition values: [empty row]
+[2026-02-12T20:32:46.936+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-07.json, range: 0-5394, partition values: [empty row]
+[2026-02-12T20:32:46.941+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-09.json, range: 0-5376, partition values: [empty row]
+[2026-02-12T20:32:46.946+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-02.json, range: 0-5314, partition values: [empty row]
+[2026-02-12T20:32:46.952+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-05.json, range: 0-5311, partition values: [empty row]
+[2026-02-12T20:32:46.956+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-04.json, range: 0-5302, partition values: [empty row]
+[2026-02-12T20:32:46.960+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-03.json, range: 0-5250, partition values: [empty row]
+[2026-02-12T20:32:46.965+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-06.json, range: 0-5026, partition values: [empty row]
+[2026-02-12T20:32:46.969+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-01.json, range: 0-3511, partition values: [empty row]
+[2026-02-12T20:32:46.972+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO FileScanRDD: Reading File path: file:///opt/data_lake/twitter_posts_raw/tweets_2026-02-12.json, range: 0-3477, partition values: [empty row]
+[2026-02-12T20:32:46.988+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:46 INFO CodeGenerator: Code generated in 5.076815 ms
+[2026-02-12T20:32:47.017+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodeGenerator: Code generated in 18.377674 ms
+[2026-02-12T20:32:47.025+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.027+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.037+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+[2026-02-12T20:32:47.059+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+[2026-02-12T20:32:47.059+0000] {spark_submit.py:492} INFO - {
+[2026-02-12T20:32:47.059+0000] {spark_submit.py:492} INFO - "type" : "struct",
+[2026-02-12T20:32:47.059+0000] {spark_submit.py:492} INFO - "fields" : [ {
+[2026-02-12T20:32:47.059+0000] {spark_submit.py:492} INFO - "name" : "user_id",
+[2026-02-12T20:32:47.060+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.060+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.060+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.060+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.060+0000] {spark_submit.py:492} INFO - "name" : "thread_id",
+[2026-02-12T20:32:47.060+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.060+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.060+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.061+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.061+0000] {spark_submit.py:492} INFO - "name" : "created_at",
+[2026-02-12T20:32:47.061+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.061+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.061+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.061+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.061+0000] {spark_submit.py:492} INFO - "name" : "edit_versions_ids",
+[2026-02-12T20:32:47.062+0000] {spark_submit.py:492} INFO - "type" : {
+[2026-02-12T20:32:47.062+0000] {spark_submit.py:492} INFO - "type" : "array",
+[2026-02-12T20:32:47.062+0000] {spark_submit.py:492} INFO - "elementType" : "long",
+[2026-02-12T20:32:47.062+0000] {spark_submit.py:492} INFO - "containsNull" : true
+[2026-02-12T20:32:47.062+0000] {spark_submit.py:492} INFO - },
+[2026-02-12T20:32:47.062+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.062+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.062+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.062+0000] {spark_submit.py:492} INFO - "name" : "tweet_id",
+[2026-02-12T20:32:47.063+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.063+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.063+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.063+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.063+0000] {spark_submit.py:492} INFO - "name" : "reply_to_user_id",
+[2026-02-12T20:32:47.063+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.063+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.063+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.064+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.064+0000] {spark_submit.py:492} INFO - "name" : "language",
+[2026-02-12T20:32:47.064+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.064+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.064+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.064+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.064+0000] {spark_submit.py:492} INFO - "name" : "tweet_text",
+[2026-02-12T20:32:47.064+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.064+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.064+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.064+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.064+0000] {spark_submit.py:492} INFO - "name" : "likes",
+[2026-02-12T20:32:47.065+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.065+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.065+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.065+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.065+0000] {spark_submit.py:492} INFO - "name" : "quotes",
+[2026-02-12T20:32:47.065+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.065+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.065+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.065+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.066+0000] {spark_submit.py:492} INFO - "name" : "replies",
+[2026-02-12T20:32:47.066+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.066+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.066+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.066+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.066+0000] {spark_submit.py:492} INFO - "name" : "retweets",
+[2026-02-12T20:32:47.066+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.066+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.066+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.067+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.067+0000] {spark_submit.py:492} INFO - "name" : "processing_date",
+[2026-02-12T20:32:47.067+0000] {spark_submit.py:492} INFO - "type" : "date",
+[2026-02-12T20:32:47.067+0000] {spark_submit.py:492} INFO - "nullable" : false,
+[2026-02-12T20:32:47.067+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.067+0000] {spark_submit.py:492} INFO - } ]
+[2026-02-12T20:32:47.067+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.067+0000] {spark_submit.py:492} INFO - and corresponding Parquet message type:
+[2026-02-12T20:32:47.067+0000] {spark_submit.py:492} INFO - message spark_schema {
+[2026-02-12T20:32:47.067+0000] {spark_submit.py:492} INFO - optional binary user_id (STRING);
+[2026-02-12T20:32:47.068+0000] {spark_submit.py:492} INFO - optional binary thread_id (STRING);
+[2026-02-12T20:32:47.068+0000] {spark_submit.py:492} INFO - optional binary created_at (STRING);
+[2026-02-12T20:32:47.068+0000] {spark_submit.py:492} INFO - optional group edit_versions_ids (LIST) {
+[2026-02-12T20:32:47.068+0000] {spark_submit.py:492} INFO - repeated group list {
+[2026-02-12T20:32:47.068+0000] {spark_submit.py:492} INFO - optional int64 element;
+[2026-02-12T20:32:47.068+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.068+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.068+0000] {spark_submit.py:492} INFO - optional binary tweet_id (STRING);
+[2026-02-12T20:32:47.068+0000] {spark_submit.py:492} INFO - optional binary reply_to_user_id (STRING);
+[2026-02-12T20:32:47.068+0000] {spark_submit.py:492} INFO - optional binary language (STRING);
+[2026-02-12T20:32:47.068+0000] {spark_submit.py:492} INFO - optional binary tweet_text (STRING);
+[2026-02-12T20:32:47.068+0000] {spark_submit.py:492} INFO - optional int64 likes;
+[2026-02-12T20:32:47.069+0000] {spark_submit.py:492} INFO - optional int64 quotes;
+[2026-02-12T20:32:47.069+0000] {spark_submit.py:492} INFO - optional int64 replies;
+[2026-02-12T20:32:47.069+0000] {spark_submit.py:492} INFO - optional int64 retweets;
+[2026-02-12T20:32:47.069+0000] {spark_submit.py:492} INFO - required int32 processing_date (DATE);
+[2026-02-12T20:32:47.069+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.069+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.069+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.107+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecPool: Got brand-new compressor [.snappy]
+[2026-02-12T20:32:47.410+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.411+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.412+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+[2026-02-12T20:32:47.414+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+[2026-02-12T20:32:47.414+0000] {spark_submit.py:492} INFO - {
+[2026-02-12T20:32:47.414+0000] {spark_submit.py:492} INFO - "type" : "struct",
+[2026-02-12T20:32:47.414+0000] {spark_submit.py:492} INFO - "fields" : [ {
+[2026-02-12T20:32:47.414+0000] {spark_submit.py:492} INFO - "name" : "user_id",
+[2026-02-12T20:32:47.414+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.415+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.415+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.415+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.415+0000] {spark_submit.py:492} INFO - "name" : "thread_id",
+[2026-02-12T20:32:47.415+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.416+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.416+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.416+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.417+0000] {spark_submit.py:492} INFO - "name" : "created_at",
+[2026-02-12T20:32:47.417+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.417+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.417+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.417+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.417+0000] {spark_submit.py:492} INFO - "name" : "edit_versions_ids",
+[2026-02-12T20:32:47.417+0000] {spark_submit.py:492} INFO - "type" : {
+[2026-02-12T20:32:47.418+0000] {spark_submit.py:492} INFO - "type" : "array",
+[2026-02-12T20:32:47.418+0000] {spark_submit.py:492} INFO - "elementType" : "long",
+[2026-02-12T20:32:47.418+0000] {spark_submit.py:492} INFO - "containsNull" : true
+[2026-02-12T20:32:47.418+0000] {spark_submit.py:492} INFO - },
+[2026-02-12T20:32:47.418+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.418+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.418+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.419+0000] {spark_submit.py:492} INFO - "name" : "tweet_id",
+[2026-02-12T20:32:47.419+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.419+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.419+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.419+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.419+0000] {spark_submit.py:492} INFO - "name" : "reply_to_user_id",
+[2026-02-12T20:32:47.419+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.419+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.420+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.420+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.420+0000] {spark_submit.py:492} INFO - "name" : "language",
+[2026-02-12T20:32:47.420+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.420+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.420+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.421+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.421+0000] {spark_submit.py:492} INFO - "name" : "tweet_text",
+[2026-02-12T20:32:47.421+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.421+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.421+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.421+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.422+0000] {spark_submit.py:492} INFO - "name" : "likes",
+[2026-02-12T20:32:47.422+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.423+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.423+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.423+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.423+0000] {spark_submit.py:492} INFO - "name" : "quotes",
+[2026-02-12T20:32:47.423+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.423+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.423+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.423+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.424+0000] {spark_submit.py:492} INFO - "name" : "replies",
+[2026-02-12T20:32:47.424+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.424+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.424+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.424+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.424+0000] {spark_submit.py:492} INFO - "name" : "retweets",
+[2026-02-12T20:32:47.424+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.424+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.425+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.425+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.425+0000] {spark_submit.py:492} INFO - "name" : "processing_date",
+[2026-02-12T20:32:47.425+0000] {spark_submit.py:492} INFO - "type" : "date",
+[2026-02-12T20:32:47.425+0000] {spark_submit.py:492} INFO - "nullable" : false,
+[2026-02-12T20:32:47.425+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.425+0000] {spark_submit.py:492} INFO - } ]
+[2026-02-12T20:32:47.426+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.426+0000] {spark_submit.py:492} INFO - and corresponding Parquet message type:
+[2026-02-12T20:32:47.426+0000] {spark_submit.py:492} INFO - message spark_schema {
+[2026-02-12T20:32:47.426+0000] {spark_submit.py:492} INFO - optional binary user_id (STRING);
+[2026-02-12T20:32:47.426+0000] {spark_submit.py:492} INFO - optional binary thread_id (STRING);
+[2026-02-12T20:32:47.426+0000] {spark_submit.py:492} INFO - optional binary created_at (STRING);
+[2026-02-12T20:32:47.426+0000] {spark_submit.py:492} INFO - optional group edit_versions_ids (LIST) {
+[2026-02-12T20:32:47.426+0000] {spark_submit.py:492} INFO - repeated group list {
+[2026-02-12T20:32:47.426+0000] {spark_submit.py:492} INFO - optional int64 element;
+[2026-02-12T20:32:47.426+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.427+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.427+0000] {spark_submit.py:492} INFO - optional binary tweet_id (STRING);
+[2026-02-12T20:32:47.427+0000] {spark_submit.py:492} INFO - optional binary reply_to_user_id (STRING);
+[2026-02-12T20:32:47.427+0000] {spark_submit.py:492} INFO - optional binary language (STRING);
+[2026-02-12T20:32:47.427+0000] {spark_submit.py:492} INFO - optional binary tweet_text (STRING);
+[2026-02-12T20:32:47.427+0000] {spark_submit.py:492} INFO - optional int64 likes;
+[2026-02-12T20:32:47.427+0000] {spark_submit.py:492} INFO - optional int64 quotes;
+[2026-02-12T20:32:47.427+0000] {spark_submit.py:492} INFO - optional int64 replies;
+[2026-02-12T20:32:47.427+0000] {spark_submit.py:492} INFO - optional int64 retweets;
+[2026-02-12T20:32:47.427+0000] {spark_submit.py:492} INFO - required int32 processing_date (DATE);
+[2026-02-12T20:32:47.428+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.428+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.428+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.445+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.445+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.446+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+[2026-02-12T20:32:47.451+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+[2026-02-12T20:32:47.452+0000] {spark_submit.py:492} INFO - {
+[2026-02-12T20:32:47.452+0000] {spark_submit.py:492} INFO - "type" : "struct",
+[2026-02-12T20:32:47.452+0000] {spark_submit.py:492} INFO - "fields" : [ {
+[2026-02-12T20:32:47.452+0000] {spark_submit.py:492} INFO - "name" : "user_id",
+[2026-02-12T20:32:47.452+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.452+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.452+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.452+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.452+0000] {spark_submit.py:492} INFO - "name" : "thread_id",
+[2026-02-12T20:32:47.453+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.453+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.453+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.453+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.453+0000] {spark_submit.py:492} INFO - "name" : "created_at",
+[2026-02-12T20:32:47.453+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.453+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.453+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.453+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.454+0000] {spark_submit.py:492} INFO - "name" : "edit_versions_ids",
+[2026-02-12T20:32:47.454+0000] {spark_submit.py:492} INFO - "type" : {
+[2026-02-12T20:32:47.454+0000] {spark_submit.py:492} INFO - "type" : "array",
+[2026-02-12T20:32:47.454+0000] {spark_submit.py:492} INFO - "elementType" : "long",
+[2026-02-12T20:32:47.454+0000] {spark_submit.py:492} INFO - "containsNull" : true
+[2026-02-12T20:32:47.454+0000] {spark_submit.py:492} INFO - },
+[2026-02-12T20:32:47.454+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.454+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.454+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.454+0000] {spark_submit.py:492} INFO - "name" : "tweet_id",
+[2026-02-12T20:32:47.454+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.454+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.454+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.455+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.455+0000] {spark_submit.py:492} INFO - "name" : "reply_to_user_id",
+[2026-02-12T20:32:47.455+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.455+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.455+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.455+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.455+0000] {spark_submit.py:492} INFO - "name" : "language",
+[2026-02-12T20:32:47.455+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.455+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.455+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.455+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.455+0000] {spark_submit.py:492} INFO - "name" : "tweet_text",
+[2026-02-12T20:32:47.455+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.456+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.456+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.456+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.456+0000] {spark_submit.py:492} INFO - "name" : "likes",
+[2026-02-12T20:32:47.456+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.456+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.456+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.456+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.456+0000] {spark_submit.py:492} INFO - "name" : "quotes",
+[2026-02-12T20:32:47.456+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.457+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.457+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.457+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.457+0000] {spark_submit.py:492} INFO - "name" : "replies",
+[2026-02-12T20:32:47.457+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.457+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.457+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.457+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.457+0000] {spark_submit.py:492} INFO - "name" : "retweets",
+[2026-02-12T20:32:47.457+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.457+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.457+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.457+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.458+0000] {spark_submit.py:492} INFO - "name" : "processing_date",
+[2026-02-12T20:32:47.458+0000] {spark_submit.py:492} INFO - "type" : "date",
+[2026-02-12T20:32:47.458+0000] {spark_submit.py:492} INFO - "nullable" : false,
+[2026-02-12T20:32:47.458+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.458+0000] {spark_submit.py:492} INFO - } ]
+[2026-02-12T20:32:47.458+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.458+0000] {spark_submit.py:492} INFO - and corresponding Parquet message type:
+[2026-02-12T20:32:47.458+0000] {spark_submit.py:492} INFO - message spark_schema {
+[2026-02-12T20:32:47.458+0000] {spark_submit.py:492} INFO - optional binary user_id (STRING);
+[2026-02-12T20:32:47.458+0000] {spark_submit.py:492} INFO - optional binary thread_id (STRING);
+[2026-02-12T20:32:47.458+0000] {spark_submit.py:492} INFO - optional binary created_at (STRING);
+[2026-02-12T20:32:47.458+0000] {spark_submit.py:492} INFO - optional group edit_versions_ids (LIST) {
+[2026-02-12T20:32:47.458+0000] {spark_submit.py:492} INFO - repeated group list {
+[2026-02-12T20:32:47.458+0000] {spark_submit.py:492} INFO - optional int64 element;
+[2026-02-12T20:32:47.459+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.459+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.459+0000] {spark_submit.py:492} INFO - optional binary tweet_id (STRING);
+[2026-02-12T20:32:47.459+0000] {spark_submit.py:492} INFO - optional binary reply_to_user_id (STRING);
+[2026-02-12T20:32:47.459+0000] {spark_submit.py:492} INFO - optional binary language (STRING);
+[2026-02-12T20:32:47.459+0000] {spark_submit.py:492} INFO - optional binary tweet_text (STRING);
+[2026-02-12T20:32:47.459+0000] {spark_submit.py:492} INFO - optional int64 likes;
+[2026-02-12T20:32:47.459+0000] {spark_submit.py:492} INFO - optional int64 quotes;
+[2026-02-12T20:32:47.459+0000] {spark_submit.py:492} INFO - optional int64 replies;
+[2026-02-12T20:32:47.459+0000] {spark_submit.py:492} INFO - optional int64 retweets;
+[2026-02-12T20:32:47.459+0000] {spark_submit.py:492} INFO - required int32 processing_date (DATE);
+[2026-02-12T20:32:47.460+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.460+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.460+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.482+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.482+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.483+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+[2026-02-12T20:32:47.488+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+[2026-02-12T20:32:47.488+0000] {spark_submit.py:492} INFO - {
+[2026-02-12T20:32:47.488+0000] {spark_submit.py:492} INFO - "type" : "struct",
+[2026-02-12T20:32:47.488+0000] {spark_submit.py:492} INFO - "fields" : [ {
+[2026-02-12T20:32:47.488+0000] {spark_submit.py:492} INFO - "name" : "user_id",
+[2026-02-12T20:32:47.488+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.488+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.489+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.489+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.489+0000] {spark_submit.py:492} INFO - "name" : "thread_id",
+[2026-02-12T20:32:47.489+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.489+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.489+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.489+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.490+0000] {spark_submit.py:492} INFO - "name" : "created_at",
+[2026-02-12T20:32:47.490+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.490+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.490+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.490+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.490+0000] {spark_submit.py:492} INFO - "name" : "edit_versions_ids",
+[2026-02-12T20:32:47.490+0000] {spark_submit.py:492} INFO - "type" : {
+[2026-02-12T20:32:47.490+0000] {spark_submit.py:492} INFO - "type" : "array",
+[2026-02-12T20:32:47.490+0000] {spark_submit.py:492} INFO - "elementType" : "long",
+[2026-02-12T20:32:47.490+0000] {spark_submit.py:492} INFO - "containsNull" : true
+[2026-02-12T20:32:47.490+0000] {spark_submit.py:492} INFO - },
+[2026-02-12T20:32:47.491+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.491+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.491+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.491+0000] {spark_submit.py:492} INFO - "name" : "tweet_id",
+[2026-02-12T20:32:47.491+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.491+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.491+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.491+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.491+0000] {spark_submit.py:492} INFO - "name" : "reply_to_user_id",
+[2026-02-12T20:32:47.492+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.492+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.492+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.492+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.492+0000] {spark_submit.py:492} INFO - "name" : "language",
+[2026-02-12T20:32:47.492+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.492+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.492+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.492+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.493+0000] {spark_submit.py:492} INFO - "name" : "tweet_text",
+[2026-02-12T20:32:47.493+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.493+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.493+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.493+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.493+0000] {spark_submit.py:492} INFO - "name" : "likes",
+[2026-02-12T20:32:47.493+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.493+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.493+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.494+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.494+0000] {spark_submit.py:492} INFO - "name" : "quotes",
+[2026-02-12T20:32:47.494+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.494+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.494+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.494+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.494+0000] {spark_submit.py:492} INFO - "name" : "replies",
+[2026-02-12T20:32:47.494+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.494+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.494+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.494+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.494+0000] {spark_submit.py:492} INFO - "name" : "retweets",
+[2026-02-12T20:32:47.494+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.495+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.495+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.495+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.495+0000] {spark_submit.py:492} INFO - "name" : "processing_date",
+[2026-02-12T20:32:47.495+0000] {spark_submit.py:492} INFO - "type" : "date",
+[2026-02-12T20:32:47.495+0000] {spark_submit.py:492} INFO - "nullable" : false,
+[2026-02-12T20:32:47.495+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.495+0000] {spark_submit.py:492} INFO - } ]
+[2026-02-12T20:32:47.495+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.495+0000] {spark_submit.py:492} INFO - and corresponding Parquet message type:
+[2026-02-12T20:32:47.495+0000] {spark_submit.py:492} INFO - message spark_schema {
+[2026-02-12T20:32:47.495+0000] {spark_submit.py:492} INFO - optional binary user_id (STRING);
+[2026-02-12T20:32:47.495+0000] {spark_submit.py:492} INFO - optional binary thread_id (STRING);
+[2026-02-12T20:32:47.496+0000] {spark_submit.py:492} INFO - optional binary created_at (STRING);
+[2026-02-12T20:32:47.496+0000] {spark_submit.py:492} INFO - optional group edit_versions_ids (LIST) {
+[2026-02-12T20:32:47.496+0000] {spark_submit.py:492} INFO - repeated group list {
+[2026-02-12T20:32:47.496+0000] {spark_submit.py:492} INFO - optional int64 element;
+[2026-02-12T20:32:47.496+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.496+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.496+0000] {spark_submit.py:492} INFO - optional binary tweet_id (STRING);
+[2026-02-12T20:32:47.496+0000] {spark_submit.py:492} INFO - optional binary reply_to_user_id (STRING);
+[2026-02-12T20:32:47.496+0000] {spark_submit.py:492} INFO - optional binary language (STRING);
+[2026-02-12T20:32:47.496+0000] {spark_submit.py:492} INFO - optional binary tweet_text (STRING);
+[2026-02-12T20:32:47.497+0000] {spark_submit.py:492} INFO - optional int64 likes;
+[2026-02-12T20:32:47.497+0000] {spark_submit.py:492} INFO - optional int64 quotes;
+[2026-02-12T20:32:47.497+0000] {spark_submit.py:492} INFO - optional int64 replies;
+[2026-02-12T20:32:47.497+0000] {spark_submit.py:492} INFO - optional int64 retweets;
+[2026-02-12T20:32:47.497+0000] {spark_submit.py:492} INFO - required int32 processing_date (DATE);
+[2026-02-12T20:32:47.497+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.497+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.497+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.519+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.519+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.522+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+[2026-02-12T20:32:47.524+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+[2026-02-12T20:32:47.525+0000] {spark_submit.py:492} INFO - {
+[2026-02-12T20:32:47.525+0000] {spark_submit.py:492} INFO - "type" : "struct",
+[2026-02-12T20:32:47.525+0000] {spark_submit.py:492} INFO - "fields" : [ {
+[2026-02-12T20:32:47.525+0000] {spark_submit.py:492} INFO - "name" : "user_id",
+[2026-02-12T20:32:47.525+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.525+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.525+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.526+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.526+0000] {spark_submit.py:492} INFO - "name" : "thread_id",
+[2026-02-12T20:32:47.526+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.526+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.526+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.526+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.526+0000] {spark_submit.py:492} INFO - "name" : "created_at",
+[2026-02-12T20:32:47.527+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.527+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.527+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.527+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.527+0000] {spark_submit.py:492} INFO - "name" : "edit_versions_ids",
+[2026-02-12T20:32:47.527+0000] {spark_submit.py:492} INFO - "type" : {
+[2026-02-12T20:32:47.528+0000] {spark_submit.py:492} INFO - "type" : "array",
+[2026-02-12T20:32:47.528+0000] {spark_submit.py:492} INFO - "elementType" : "long",
+[2026-02-12T20:32:47.528+0000] {spark_submit.py:492} INFO - "containsNull" : true
+[2026-02-12T20:32:47.528+0000] {spark_submit.py:492} INFO - },
+[2026-02-12T20:32:47.528+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.528+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.528+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.529+0000] {spark_submit.py:492} INFO - "name" : "tweet_id",
+[2026-02-12T20:32:47.529+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.529+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.529+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.529+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.529+0000] {spark_submit.py:492} INFO - "name" : "reply_to_user_id",
+[2026-02-12T20:32:47.529+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.529+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.529+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.530+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.530+0000] {spark_submit.py:492} INFO - "name" : "language",
+[2026-02-12T20:32:47.530+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.530+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.530+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.530+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.530+0000] {spark_submit.py:492} INFO - "name" : "tweet_text",
+[2026-02-12T20:32:47.530+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.530+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.531+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.531+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.531+0000] {spark_submit.py:492} INFO - "name" : "likes",
+[2026-02-12T20:32:47.531+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.531+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.531+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.531+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.531+0000] {spark_submit.py:492} INFO - "name" : "quotes",
+[2026-02-12T20:32:47.531+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.532+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.532+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.532+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.532+0000] {spark_submit.py:492} INFO - "name" : "replies",
+[2026-02-12T20:32:47.532+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.532+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.532+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.532+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.532+0000] {spark_submit.py:492} INFO - "name" : "retweets",
+[2026-02-12T20:32:47.533+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.533+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.533+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.533+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.533+0000] {spark_submit.py:492} INFO - "name" : "processing_date",
+[2026-02-12T20:32:47.533+0000] {spark_submit.py:492} INFO - "type" : "date",
+[2026-02-12T20:32:47.533+0000] {spark_submit.py:492} INFO - "nullable" : false,
+[2026-02-12T20:32:47.533+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.533+0000] {spark_submit.py:492} INFO - } ]
+[2026-02-12T20:32:47.534+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.534+0000] {spark_submit.py:492} INFO - and corresponding Parquet message type:
+[2026-02-12T20:32:47.534+0000] {spark_submit.py:492} INFO - message spark_schema {
+[2026-02-12T20:32:47.534+0000] {spark_submit.py:492} INFO - optional binary user_id (STRING);
+[2026-02-12T20:32:47.534+0000] {spark_submit.py:492} INFO - optional binary thread_id (STRING);
+[2026-02-12T20:32:47.534+0000] {spark_submit.py:492} INFO - optional binary created_at (STRING);
+[2026-02-12T20:32:47.534+0000] {spark_submit.py:492} INFO - optional group edit_versions_ids (LIST) {
+[2026-02-12T20:32:47.534+0000] {spark_submit.py:492} INFO - repeated group list {
+[2026-02-12T20:32:47.534+0000] {spark_submit.py:492} INFO - optional int64 element;
+[2026-02-12T20:32:47.534+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.534+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.535+0000] {spark_submit.py:492} INFO - optional binary tweet_id (STRING);
+[2026-02-12T20:32:47.535+0000] {spark_submit.py:492} INFO - optional binary reply_to_user_id (STRING);
+[2026-02-12T20:32:47.535+0000] {spark_submit.py:492} INFO - optional binary language (STRING);
+[2026-02-12T20:32:47.535+0000] {spark_submit.py:492} INFO - optional binary tweet_text (STRING);
+[2026-02-12T20:32:47.535+0000] {spark_submit.py:492} INFO - optional int64 likes;
+[2026-02-12T20:32:47.535+0000] {spark_submit.py:492} INFO - optional int64 quotes;
+[2026-02-12T20:32:47.535+0000] {spark_submit.py:492} INFO - optional int64 replies;
+[2026-02-12T20:32:47.535+0000] {spark_submit.py:492} INFO - optional int64 retweets;
+[2026-02-12T20:32:47.535+0000] {spark_submit.py:492} INFO - required int32 processing_date (DATE);
+[2026-02-12T20:32:47.535+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.536+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.536+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.555+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.555+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.556+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+[2026-02-12T20:32:47.561+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+[2026-02-12T20:32:47.561+0000] {spark_submit.py:492} INFO - {
+[2026-02-12T20:32:47.561+0000] {spark_submit.py:492} INFO - "type" : "struct",
+[2026-02-12T20:32:47.561+0000] {spark_submit.py:492} INFO - "fields" : [ {
+[2026-02-12T20:32:47.561+0000] {spark_submit.py:492} INFO - "name" : "user_id",
+[2026-02-12T20:32:47.561+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.561+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.561+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.562+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.562+0000] {spark_submit.py:492} INFO - "name" : "thread_id",
+[2026-02-12T20:32:47.562+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.562+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.562+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.562+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.562+0000] {spark_submit.py:492} INFO - "name" : "created_at",
+[2026-02-12T20:32:47.562+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.563+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.563+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.563+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.563+0000] {spark_submit.py:492} INFO - "name" : "edit_versions_ids",
+[2026-02-12T20:32:47.563+0000] {spark_submit.py:492} INFO - "type" : {
+[2026-02-12T20:32:47.563+0000] {spark_submit.py:492} INFO - "type" : "array",
+[2026-02-12T20:32:47.563+0000] {spark_submit.py:492} INFO - "elementType" : "long",
+[2026-02-12T20:32:47.563+0000] {spark_submit.py:492} INFO - "containsNull" : true
+[2026-02-12T20:32:47.563+0000] {spark_submit.py:492} INFO - },
+[2026-02-12T20:32:47.563+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.563+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.564+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.564+0000] {spark_submit.py:492} INFO - "name" : "tweet_id",
+[2026-02-12T20:32:47.564+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.564+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.564+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.564+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.564+0000] {spark_submit.py:492} INFO - "name" : "reply_to_user_id",
+[2026-02-12T20:32:47.564+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.564+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.564+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.564+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.565+0000] {spark_submit.py:492} INFO - "name" : "language",
+[2026-02-12T20:32:47.565+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.565+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.565+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.565+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.565+0000] {spark_submit.py:492} INFO - "name" : "tweet_text",
+[2026-02-12T20:32:47.565+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.565+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.565+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.565+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.565+0000] {spark_submit.py:492} INFO - "name" : "likes",
+[2026-02-12T20:32:47.566+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.566+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.566+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.566+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.566+0000] {spark_submit.py:492} INFO - "name" : "quotes",
+[2026-02-12T20:32:47.566+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.566+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.566+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.566+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.566+0000] {spark_submit.py:492} INFO - "name" : "replies",
+[2026-02-12T20:32:47.566+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.566+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.567+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.567+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.567+0000] {spark_submit.py:492} INFO - "name" : "retweets",
+[2026-02-12T20:32:47.567+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.567+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.567+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.567+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.567+0000] {spark_submit.py:492} INFO - "name" : "processing_date",
+[2026-02-12T20:32:47.567+0000] {spark_submit.py:492} INFO - "type" : "date",
+[2026-02-12T20:32:47.567+0000] {spark_submit.py:492} INFO - "nullable" : false,
+[2026-02-12T20:32:47.567+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.567+0000] {spark_submit.py:492} INFO - } ]
+[2026-02-12T20:32:47.567+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.568+0000] {spark_submit.py:492} INFO - and corresponding Parquet message type:
+[2026-02-12T20:32:47.568+0000] {spark_submit.py:492} INFO - message spark_schema {
+[2026-02-12T20:32:47.568+0000] {spark_submit.py:492} INFO - optional binary user_id (STRING);
+[2026-02-12T20:32:47.568+0000] {spark_submit.py:492} INFO - optional binary thread_id (STRING);
+[2026-02-12T20:32:47.568+0000] {spark_submit.py:492} INFO - optional binary created_at (STRING);
+[2026-02-12T20:32:47.568+0000] {spark_submit.py:492} INFO - optional group edit_versions_ids (LIST) {
+[2026-02-12T20:32:47.568+0000] {spark_submit.py:492} INFO - repeated group list {
+[2026-02-12T20:32:47.568+0000] {spark_submit.py:492} INFO - optional int64 element;
+[2026-02-12T20:32:47.568+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.569+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.569+0000] {spark_submit.py:492} INFO - optional binary tweet_id (STRING);
+[2026-02-12T20:32:47.569+0000] {spark_submit.py:492} INFO - optional binary reply_to_user_id (STRING);
+[2026-02-12T20:32:47.569+0000] {spark_submit.py:492} INFO - optional binary language (STRING);
+[2026-02-12T20:32:47.569+0000] {spark_submit.py:492} INFO - optional binary tweet_text (STRING);
+[2026-02-12T20:32:47.569+0000] {spark_submit.py:492} INFO - optional int64 likes;
+[2026-02-12T20:32:47.569+0000] {spark_submit.py:492} INFO - optional int64 quotes;
+[2026-02-12T20:32:47.569+0000] {spark_submit.py:492} INFO - optional int64 replies;
+[2026-02-12T20:32:47.569+0000] {spark_submit.py:492} INFO - optional int64 retweets;
+[2026-02-12T20:32:47.569+0000] {spark_submit.py:492} INFO - required int32 processing_date (DATE);
+[2026-02-12T20:32:47.569+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.569+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.569+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.589+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.589+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.590+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+[2026-02-12T20:32:47.592+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+[2026-02-12T20:32:47.592+0000] {spark_submit.py:492} INFO - {
+[2026-02-12T20:32:47.592+0000] {spark_submit.py:492} INFO - "type" : "struct",
+[2026-02-12T20:32:47.592+0000] {spark_submit.py:492} INFO - "fields" : [ {
+[2026-02-12T20:32:47.592+0000] {spark_submit.py:492} INFO - "name" : "user_id",
+[2026-02-12T20:32:47.592+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.592+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.593+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.593+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.593+0000] {spark_submit.py:492} INFO - "name" : "thread_id",
+[2026-02-12T20:32:47.593+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.593+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.593+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.593+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.594+0000] {spark_submit.py:492} INFO - "name" : "created_at",
+[2026-02-12T20:32:47.594+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.594+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.594+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.594+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.594+0000] {spark_submit.py:492} INFO - "name" : "edit_versions_ids",
+[2026-02-12T20:32:47.594+0000] {spark_submit.py:492} INFO - "type" : {
+[2026-02-12T20:32:47.595+0000] {spark_submit.py:492} INFO - "type" : "array",
+[2026-02-12T20:32:47.595+0000] {spark_submit.py:492} INFO - "elementType" : "long",
+[2026-02-12T20:32:47.595+0000] {spark_submit.py:492} INFO - "containsNull" : true
+[2026-02-12T20:32:47.596+0000] {spark_submit.py:492} INFO - },
+[2026-02-12T20:32:47.596+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.596+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.596+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.596+0000] {spark_submit.py:492} INFO - "name" : "tweet_id",
+[2026-02-12T20:32:47.597+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.597+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.597+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.597+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.597+0000] {spark_submit.py:492} INFO - "name" : "reply_to_user_id",
+[2026-02-12T20:32:47.597+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.597+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.597+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.597+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.597+0000] {spark_submit.py:492} INFO - "name" : "language",
+[2026-02-12T20:32:47.598+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.598+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.598+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.598+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.598+0000] {spark_submit.py:492} INFO - "name" : "tweet_text",
+[2026-02-12T20:32:47.598+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.598+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.598+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.598+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.598+0000] {spark_submit.py:492} INFO - "name" : "likes",
+[2026-02-12T20:32:47.599+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.599+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.599+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.599+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.599+0000] {spark_submit.py:492} INFO - "name" : "quotes",
+[2026-02-12T20:32:47.599+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.599+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.599+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.599+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.600+0000] {spark_submit.py:492} INFO - "name" : "replies",
+[2026-02-12T20:32:47.600+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.600+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.600+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.600+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.600+0000] {spark_submit.py:492} INFO - "name" : "retweets",
+[2026-02-12T20:32:47.601+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.601+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.601+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.601+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.602+0000] {spark_submit.py:492} INFO - "name" : "processing_date",
+[2026-02-12T20:32:47.602+0000] {spark_submit.py:492} INFO - "type" : "date",
+[2026-02-12T20:32:47.602+0000] {spark_submit.py:492} INFO - "nullable" : false,
+[2026-02-12T20:32:47.602+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.602+0000] {spark_submit.py:492} INFO - } ]
+[2026-02-12T20:32:47.603+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.603+0000] {spark_submit.py:492} INFO - and corresponding Parquet message type:
+[2026-02-12T20:32:47.603+0000] {spark_submit.py:492} INFO - message spark_schema {
+[2026-02-12T20:32:47.603+0000] {spark_submit.py:492} INFO - optional binary user_id (STRING);
+[2026-02-12T20:32:47.603+0000] {spark_submit.py:492} INFO - optional binary thread_id (STRING);
+[2026-02-12T20:32:47.603+0000] {spark_submit.py:492} INFO - optional binary created_at (STRING);
+[2026-02-12T20:32:47.603+0000] {spark_submit.py:492} INFO - optional group edit_versions_ids (LIST) {
+[2026-02-12T20:32:47.603+0000] {spark_submit.py:492} INFO - repeated group list {
+[2026-02-12T20:32:47.603+0000] {spark_submit.py:492} INFO - optional int64 element;
+[2026-02-12T20:32:47.604+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.604+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.604+0000] {spark_submit.py:492} INFO - optional binary tweet_id (STRING);
+[2026-02-12T20:32:47.604+0000] {spark_submit.py:492} INFO - optional binary reply_to_user_id (STRING);
+[2026-02-12T20:32:47.604+0000] {spark_submit.py:492} INFO - optional binary language (STRING);
+[2026-02-12T20:32:47.604+0000] {spark_submit.py:492} INFO - optional binary tweet_text (STRING);
+[2026-02-12T20:32:47.604+0000] {spark_submit.py:492} INFO - optional int64 likes;
+[2026-02-12T20:32:47.605+0000] {spark_submit.py:492} INFO - optional int64 quotes;
+[2026-02-12T20:32:47.605+0000] {spark_submit.py:492} INFO - optional int64 replies;
+[2026-02-12T20:32:47.605+0000] {spark_submit.py:492} INFO - optional int64 retweets;
+[2026-02-12T20:32:47.605+0000] {spark_submit.py:492} INFO - required int32 processing_date (DATE);
+[2026-02-12T20:32:47.605+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.605+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.605+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.619+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.620+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.621+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+[2026-02-12T20:32:47.622+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+[2026-02-12T20:32:47.622+0000] {spark_submit.py:492} INFO - {
+[2026-02-12T20:32:47.622+0000] {spark_submit.py:492} INFO - "type" : "struct",
+[2026-02-12T20:32:47.622+0000] {spark_submit.py:492} INFO - "fields" : [ {
+[2026-02-12T20:32:47.623+0000] {spark_submit.py:492} INFO - "name" : "user_id",
+[2026-02-12T20:32:47.623+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.623+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.623+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.623+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.623+0000] {spark_submit.py:492} INFO - "name" : "thread_id",
+[2026-02-12T20:32:47.623+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.623+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.623+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.623+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.623+0000] {spark_submit.py:492} INFO - "name" : "created_at",
+[2026-02-12T20:32:47.623+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.624+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.624+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.624+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.624+0000] {spark_submit.py:492} INFO - "name" : "edit_versions_ids",
+[2026-02-12T20:32:47.624+0000] {spark_submit.py:492} INFO - "type" : {
+[2026-02-12T20:32:47.624+0000] {spark_submit.py:492} INFO - "type" : "array",
+[2026-02-12T20:32:47.624+0000] {spark_submit.py:492} INFO - "elementType" : "long",
+[2026-02-12T20:32:47.624+0000] {spark_submit.py:492} INFO - "containsNull" : true
+[2026-02-12T20:32:47.625+0000] {spark_submit.py:492} INFO - },
+[2026-02-12T20:32:47.625+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.625+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.625+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.625+0000] {spark_submit.py:492} INFO - "name" : "tweet_id",
+[2026-02-12T20:32:47.625+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.625+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.626+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.626+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.626+0000] {spark_submit.py:492} INFO - "name" : "reply_to_user_id",
+[2026-02-12T20:32:47.626+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.626+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.626+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.626+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.627+0000] {spark_submit.py:492} INFO - "name" : "language",
+[2026-02-12T20:32:47.628+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.628+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.628+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.628+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.628+0000] {spark_submit.py:492} INFO - "name" : "tweet_text",
+[2026-02-12T20:32:47.628+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.628+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.628+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.629+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.629+0000] {spark_submit.py:492} INFO - "name" : "likes",
+[2026-02-12T20:32:47.629+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.629+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.629+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.629+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.629+0000] {spark_submit.py:492} INFO - "name" : "quotes",
+[2026-02-12T20:32:47.629+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.629+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.630+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.630+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.630+0000] {spark_submit.py:492} INFO - "name" : "replies",
+[2026-02-12T20:32:47.630+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.630+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.630+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.630+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.630+0000] {spark_submit.py:492} INFO - "name" : "retweets",
+[2026-02-12T20:32:47.630+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.630+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.631+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.631+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.631+0000] {spark_submit.py:492} INFO - "name" : "processing_date",
+[2026-02-12T20:32:47.631+0000] {spark_submit.py:492} INFO - "type" : "date",
+[2026-02-12T20:32:47.631+0000] {spark_submit.py:492} INFO - "nullable" : false,
+[2026-02-12T20:32:47.631+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.631+0000] {spark_submit.py:492} INFO - } ]
+[2026-02-12T20:32:47.631+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.631+0000] {spark_submit.py:492} INFO - and corresponding Parquet message type:
+[2026-02-12T20:32:47.631+0000] {spark_submit.py:492} INFO - message spark_schema {
+[2026-02-12T20:32:47.631+0000] {spark_submit.py:492} INFO - optional binary user_id (STRING);
+[2026-02-12T20:32:47.632+0000] {spark_submit.py:492} INFO - optional binary thread_id (STRING);
+[2026-02-12T20:32:47.632+0000] {spark_submit.py:492} INFO - optional binary created_at (STRING);
+[2026-02-12T20:32:47.632+0000] {spark_submit.py:492} INFO - optional group edit_versions_ids (LIST) {
+[2026-02-12T20:32:47.632+0000] {spark_submit.py:492} INFO - repeated group list {
+[2026-02-12T20:32:47.632+0000] {spark_submit.py:492} INFO - optional int64 element;
+[2026-02-12T20:32:47.632+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.632+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.632+0000] {spark_submit.py:492} INFO - optional binary tweet_id (STRING);
+[2026-02-12T20:32:47.633+0000] {spark_submit.py:492} INFO - optional binary reply_to_user_id (STRING);
+[2026-02-12T20:32:47.633+0000] {spark_submit.py:492} INFO - optional binary language (STRING);
+[2026-02-12T20:32:47.633+0000] {spark_submit.py:492} INFO - optional binary tweet_text (STRING);
+[2026-02-12T20:32:47.633+0000] {spark_submit.py:492} INFO - optional int64 likes;
+[2026-02-12T20:32:47.634+0000] {spark_submit.py:492} INFO - optional int64 quotes;
+[2026-02-12T20:32:47.634+0000] {spark_submit.py:492} INFO - optional int64 replies;
+[2026-02-12T20:32:47.634+0000] {spark_submit.py:492} INFO - optional int64 retweets;
+[2026-02-12T20:32:47.634+0000] {spark_submit.py:492} INFO - required int32 processing_date (DATE);
+[2026-02-12T20:32:47.634+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.634+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.634+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.647+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.647+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.648+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+[2026-02-12T20:32:47.649+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+[2026-02-12T20:32:47.650+0000] {spark_submit.py:492} INFO - {
+[2026-02-12T20:32:47.650+0000] {spark_submit.py:492} INFO - "type" : "struct",
+[2026-02-12T20:32:47.650+0000] {spark_submit.py:492} INFO - "fields" : [ {
+[2026-02-12T20:32:47.650+0000] {spark_submit.py:492} INFO - "name" : "user_id",
+[2026-02-12T20:32:47.650+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.650+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.650+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.650+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.650+0000] {spark_submit.py:492} INFO - "name" : "thread_id",
+[2026-02-12T20:32:47.650+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.650+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.651+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.651+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.651+0000] {spark_submit.py:492} INFO - "name" : "created_at",
+[2026-02-12T20:32:47.651+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.651+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.651+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.651+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.651+0000] {spark_submit.py:492} INFO - "name" : "edit_versions_ids",
+[2026-02-12T20:32:47.651+0000] {spark_submit.py:492} INFO - "type" : {
+[2026-02-12T20:32:47.651+0000] {spark_submit.py:492} INFO - "type" : "array",
+[2026-02-12T20:32:47.652+0000] {spark_submit.py:492} INFO - "elementType" : "long",
+[2026-02-12T20:32:47.652+0000] {spark_submit.py:492} INFO - "containsNull" : true
+[2026-02-12T20:32:47.652+0000] {spark_submit.py:492} INFO - },
+[2026-02-12T20:32:47.652+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.652+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.652+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.652+0000] {spark_submit.py:492} INFO - "name" : "tweet_id",
+[2026-02-12T20:32:47.652+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.652+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.652+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.653+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.653+0000] {spark_submit.py:492} INFO - "name" : "reply_to_user_id",
+[2026-02-12T20:32:47.653+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.653+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.653+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.653+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.653+0000] {spark_submit.py:492} INFO - "name" : "language",
+[2026-02-12T20:32:47.653+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.653+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.654+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.654+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.654+0000] {spark_submit.py:492} INFO - "name" : "tweet_text",
+[2026-02-12T20:32:47.654+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.654+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.654+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.654+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.654+0000] {spark_submit.py:492} INFO - "name" : "likes",
+[2026-02-12T20:32:47.654+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.654+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.654+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.655+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.655+0000] {spark_submit.py:492} INFO - "name" : "quotes",
+[2026-02-12T20:32:47.655+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.655+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.655+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.655+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.655+0000] {spark_submit.py:492} INFO - "name" : "replies",
+[2026-02-12T20:32:47.655+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.655+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.656+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.656+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.656+0000] {spark_submit.py:492} INFO - "name" : "retweets",
+[2026-02-12T20:32:47.656+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.656+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.656+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.656+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.656+0000] {spark_submit.py:492} INFO - "name" : "processing_date",
+[2026-02-12T20:32:47.656+0000] {spark_submit.py:492} INFO - "type" : "date",
+[2026-02-12T20:32:47.656+0000] {spark_submit.py:492} INFO - "nullable" : false,
+[2026-02-12T20:32:47.656+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.657+0000] {spark_submit.py:492} INFO - } ]
+[2026-02-12T20:32:47.657+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.657+0000] {spark_submit.py:492} INFO - and corresponding Parquet message type:
+[2026-02-12T20:32:47.657+0000] {spark_submit.py:492} INFO - message spark_schema {
+[2026-02-12T20:32:47.657+0000] {spark_submit.py:492} INFO - optional binary user_id (STRING);
+[2026-02-12T20:32:47.657+0000] {spark_submit.py:492} INFO - optional binary thread_id (STRING);
+[2026-02-12T20:32:47.657+0000] {spark_submit.py:492} INFO - optional binary created_at (STRING);
+[2026-02-12T20:32:47.657+0000] {spark_submit.py:492} INFO - optional group edit_versions_ids (LIST) {
+[2026-02-12T20:32:47.657+0000] {spark_submit.py:492} INFO - repeated group list {
+[2026-02-12T20:32:47.657+0000] {spark_submit.py:492} INFO - optional int64 element;
+[2026-02-12T20:32:47.657+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.658+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.658+0000] {spark_submit.py:492} INFO - optional binary tweet_id (STRING);
+[2026-02-12T20:32:47.658+0000] {spark_submit.py:492} INFO - optional binary reply_to_user_id (STRING);
+[2026-02-12T20:32:47.658+0000] {spark_submit.py:492} INFO - optional binary language (STRING);
+[2026-02-12T20:32:47.658+0000] {spark_submit.py:492} INFO - optional binary tweet_text (STRING);
+[2026-02-12T20:32:47.658+0000] {spark_submit.py:492} INFO - optional int64 likes;
+[2026-02-12T20:32:47.658+0000] {spark_submit.py:492} INFO - optional int64 quotes;
+[2026-02-12T20:32:47.658+0000] {spark_submit.py:492} INFO - optional int64 replies;
+[2026-02-12T20:32:47.658+0000] {spark_submit.py:492} INFO - optional int64 retweets;
+[2026-02-12T20:32:47.659+0000] {spark_submit.py:492} INFO - required int32 processing_date (DATE);
+[2026-02-12T20:32:47.659+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.659+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.659+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.676+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.677+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.677+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+[2026-02-12T20:32:47.680+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+[2026-02-12T20:32:47.680+0000] {spark_submit.py:492} INFO - {
+[2026-02-12T20:32:47.680+0000] {spark_submit.py:492} INFO - "type" : "struct",
+[2026-02-12T20:32:47.680+0000] {spark_submit.py:492} INFO - "fields" : [ {
+[2026-02-12T20:32:47.680+0000] {spark_submit.py:492} INFO - "name" : "user_id",
+[2026-02-12T20:32:47.680+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.680+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.681+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.681+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.681+0000] {spark_submit.py:492} INFO - "name" : "thread_id",
+[2026-02-12T20:32:47.681+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.681+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.681+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.681+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.681+0000] {spark_submit.py:492} INFO - "name" : "created_at",
+[2026-02-12T20:32:47.681+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.681+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.682+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.682+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.682+0000] {spark_submit.py:492} INFO - "name" : "edit_versions_ids",
+[2026-02-12T20:32:47.682+0000] {spark_submit.py:492} INFO - "type" : {
+[2026-02-12T20:32:47.682+0000] {spark_submit.py:492} INFO - "type" : "array",
+[2026-02-12T20:32:47.682+0000] {spark_submit.py:492} INFO - "elementType" : "long",
+[2026-02-12T20:32:47.682+0000] {spark_submit.py:492} INFO - "containsNull" : true
+[2026-02-12T20:32:47.682+0000] {spark_submit.py:492} INFO - },
+[2026-02-12T20:32:47.682+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.682+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.682+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.683+0000] {spark_submit.py:492} INFO - "name" : "tweet_id",
+[2026-02-12T20:32:47.683+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.683+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.683+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.683+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.683+0000] {spark_submit.py:492} INFO - "name" : "reply_to_user_id",
+[2026-02-12T20:32:47.683+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.683+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.684+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.684+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.684+0000] {spark_submit.py:492} INFO - "name" : "language",
+[2026-02-12T20:32:47.684+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.684+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.684+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.685+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.685+0000] {spark_submit.py:492} INFO - "name" : "tweet_text",
+[2026-02-12T20:32:47.685+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.685+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.685+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.685+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.685+0000] {spark_submit.py:492} INFO - "name" : "likes",
+[2026-02-12T20:32:47.685+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.685+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.686+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.686+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.686+0000] {spark_submit.py:492} INFO - "name" : "quotes",
+[2026-02-12T20:32:47.686+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.686+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.686+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.686+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.686+0000] {spark_submit.py:492} INFO - "name" : "replies",
+[2026-02-12T20:32:47.686+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.686+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.687+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.687+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.687+0000] {spark_submit.py:492} INFO - "name" : "retweets",
+[2026-02-12T20:32:47.687+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.687+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.687+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.687+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.687+0000] {spark_submit.py:492} INFO - "name" : "processing_date",
+[2026-02-12T20:32:47.687+0000] {spark_submit.py:492} INFO - "type" : "date",
+[2026-02-12T20:32:47.687+0000] {spark_submit.py:492} INFO - "nullable" : false,
+[2026-02-12T20:32:47.688+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.688+0000] {spark_submit.py:492} INFO - } ]
+[2026-02-12T20:32:47.688+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.689+0000] {spark_submit.py:492} INFO - and corresponding Parquet message type:
+[2026-02-12T20:32:47.689+0000] {spark_submit.py:492} INFO - message spark_schema {
+[2026-02-12T20:32:47.689+0000] {spark_submit.py:492} INFO - optional binary user_id (STRING);
+[2026-02-12T20:32:47.689+0000] {spark_submit.py:492} INFO - optional binary thread_id (STRING);
+[2026-02-12T20:32:47.689+0000] {spark_submit.py:492} INFO - optional binary created_at (STRING);
+[2026-02-12T20:32:47.689+0000] {spark_submit.py:492} INFO - optional group edit_versions_ids (LIST) {
+[2026-02-12T20:32:47.689+0000] {spark_submit.py:492} INFO - repeated group list {
+[2026-02-12T20:32:47.689+0000] {spark_submit.py:492} INFO - optional int64 element;
+[2026-02-12T20:32:47.690+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.690+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.690+0000] {spark_submit.py:492} INFO - optional binary tweet_id (STRING);
+[2026-02-12T20:32:47.690+0000] {spark_submit.py:492} INFO - optional binary reply_to_user_id (STRING);
+[2026-02-12T20:32:47.691+0000] {spark_submit.py:492} INFO - optional binary language (STRING);
+[2026-02-12T20:32:47.691+0000] {spark_submit.py:492} INFO - optional binary tweet_text (STRING);
+[2026-02-12T20:32:47.691+0000] {spark_submit.py:492} INFO - optional int64 likes;
+[2026-02-12T20:32:47.691+0000] {spark_submit.py:492} INFO - optional int64 quotes;
+[2026-02-12T20:32:47.691+0000] {spark_submit.py:492} INFO - optional int64 replies;
+[2026-02-12T20:32:47.691+0000] {spark_submit.py:492} INFO - optional int64 retweets;
+[2026-02-12T20:32:47.691+0000] {spark_submit.py:492} INFO - required int32 processing_date (DATE);
+[2026-02-12T20:32:47.691+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.691+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.691+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.712+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.713+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO CodecConfig: Compression: SNAPPY
+[2026-02-12T20:32:47.714+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetOutputFormat: ParquetRecordWriter [block size: 134217728b, row group padding size: 8388608b, validating: false]
+[2026-02-12T20:32:47.716+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:
+[2026-02-12T20:32:47.716+0000] {spark_submit.py:492} INFO - {
+[2026-02-12T20:32:47.716+0000] {spark_submit.py:492} INFO - "type" : "struct",
+[2026-02-12T20:32:47.716+0000] {spark_submit.py:492} INFO - "fields" : [ {
+[2026-02-12T20:32:47.716+0000] {spark_submit.py:492} INFO - "name" : "user_id",
+[2026-02-12T20:32:47.716+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.717+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.717+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.717+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.717+0000] {spark_submit.py:492} INFO - "name" : "thread_id",
+[2026-02-12T20:32:47.717+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.717+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.717+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.717+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.717+0000] {spark_submit.py:492} INFO - "name" : "created_at",
+[2026-02-12T20:32:47.718+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.718+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.718+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.718+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.718+0000] {spark_submit.py:492} INFO - "name" : "edit_versions_ids",
+[2026-02-12T20:32:47.718+0000] {spark_submit.py:492} INFO - "type" : {
+[2026-02-12T20:32:47.718+0000] {spark_submit.py:492} INFO - "type" : "array",
+[2026-02-12T20:32:47.718+0000] {spark_submit.py:492} INFO - "elementType" : "long",
+[2026-02-12T20:32:47.718+0000] {spark_submit.py:492} INFO - "containsNull" : true
+[2026-02-12T20:32:47.719+0000] {spark_submit.py:492} INFO - },
+[2026-02-12T20:32:47.719+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.719+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.719+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.719+0000] {spark_submit.py:492} INFO - "name" : "tweet_id",
+[2026-02-12T20:32:47.719+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.719+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.720+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.720+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.720+0000] {spark_submit.py:492} INFO - "name" : "reply_to_user_id",
+[2026-02-12T20:32:47.720+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.721+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.721+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.721+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.721+0000] {spark_submit.py:492} INFO - "name" : "language",
+[2026-02-12T20:32:47.721+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.721+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.721+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.721+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.722+0000] {spark_submit.py:492} INFO - "name" : "tweet_text",
+[2026-02-12T20:32:47.722+0000] {spark_submit.py:492} INFO - "type" : "string",
+[2026-02-12T20:32:47.722+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.722+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.722+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.722+0000] {spark_submit.py:492} INFO - "name" : "likes",
+[2026-02-12T20:32:47.723+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.723+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.723+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.723+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.723+0000] {spark_submit.py:492} INFO - "name" : "quotes",
+[2026-02-12T20:32:47.723+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.723+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.723+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.723+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.724+0000] {spark_submit.py:492} INFO - "name" : "replies",
+[2026-02-12T20:32:47.724+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.724+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.724+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.724+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.724+0000] {spark_submit.py:492} INFO - "name" : "retweets",
+[2026-02-12T20:32:47.724+0000] {spark_submit.py:492} INFO - "type" : "long",
+[2026-02-12T20:32:47.724+0000] {spark_submit.py:492} INFO - "nullable" : true,
+[2026-02-12T20:32:47.725+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.725+0000] {spark_submit.py:492} INFO - }, {
+[2026-02-12T20:32:47.725+0000] {spark_submit.py:492} INFO - "name" : "processing_date",
+[2026-02-12T20:32:47.725+0000] {spark_submit.py:492} INFO - "type" : "date",
+[2026-02-12T20:32:47.725+0000] {spark_submit.py:492} INFO - "nullable" : false,
+[2026-02-12T20:32:47.725+0000] {spark_submit.py:492} INFO - "metadata" : { }
+[2026-02-12T20:32:47.725+0000] {spark_submit.py:492} INFO - } ]
+[2026-02-12T20:32:47.726+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.726+0000] {spark_submit.py:492} INFO - and corresponding Parquet message type:
+[2026-02-12T20:32:47.726+0000] {spark_submit.py:492} INFO - message spark_schema {
+[2026-02-12T20:32:47.726+0000] {spark_submit.py:492} INFO - optional binary user_id (STRING);
+[2026-02-12T20:32:47.726+0000] {spark_submit.py:492} INFO - optional binary thread_id (STRING);
+[2026-02-12T20:32:47.726+0000] {spark_submit.py:492} INFO - optional binary created_at (STRING);
+[2026-02-12T20:32:47.726+0000] {spark_submit.py:492} INFO - optional group edit_versions_ids (LIST) {
+[2026-02-12T20:32:47.726+0000] {spark_submit.py:492} INFO - repeated group list {
+[2026-02-12T20:32:47.727+0000] {spark_submit.py:492} INFO - optional int64 element;
+[2026-02-12T20:32:47.727+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.727+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.727+0000] {spark_submit.py:492} INFO - optional binary tweet_id (STRING);
+[2026-02-12T20:32:47.727+0000] {spark_submit.py:492} INFO - optional binary reply_to_user_id (STRING);
+[2026-02-12T20:32:47.727+0000] {spark_submit.py:492} INFO - optional binary language (STRING);
+[2026-02-12T20:32:47.727+0000] {spark_submit.py:492} INFO - optional binary tweet_text (STRING);
+[2026-02-12T20:32:47.728+0000] {spark_submit.py:492} INFO - optional int64 likes;
+[2026-02-12T20:32:47.728+0000] {spark_submit.py:492} INFO - optional int64 quotes;
+[2026-02-12T20:32:47.728+0000] {spark_submit.py:492} INFO - optional int64 replies;
+[2026-02-12T20:32:47.728+0000] {spark_submit.py:492} INFO - optional int64 retweets;
+[2026-02-12T20:32:47.728+0000] {spark_submit.py:492} INFO - required int32 processing_date (DATE);
+[2026-02-12T20:32:47.728+0000] {spark_submit.py:492} INFO - }
+[2026-02-12T20:32:47.728+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.729+0000] {spark_submit.py:492} INFO - 
+[2026-02-12T20:32:47.752+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO FileOutputCommitter: Saved output of task 'attempt_202602122032464902734382500941759_0001_m_000000_1' to file:/opt/airflow/data/silver/_temporary/0/task_202602122032464902734382500941759_0001_m_000000
+[2026-02-12T20:32:47.753+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO SparkHadoopMapRedUtil: attempt_202602122032464902734382500941759_0001_m_000000_1: Committed. Elapsed time: 0 ms.
+[2026-02-12T20:32:47.768+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO Executor: Finished task 0.0 in stage 1.0 (TID 1). 3930 bytes result sent to driver
+[2026-02-12T20:32:47.770+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 996 ms on 649004db3ede (executor driver) (1/1)
+[2026-02-12T20:32:47.770+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool
+[2026-02-12T20:32:47.771+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO DAGScheduler: ResultStage 1 (parquet at NativeMethodAccessorImpl.java:0) finished in 1.025 s
+[2026-02-12T20:32:47.771+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO DAGScheduler: Job 1 is finished. Cancelling potential speculative or zombie tasks for this job
+[2026-02-12T20:32:47.771+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO TaskSchedulerImpl: Killing all running tasks in stage 1: Stage finished
+[2026-02-12T20:32:47.772+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO DAGScheduler: Job 1 finished: parquet at NativeMethodAccessorImpl.java:0, took 1.028388 s
+[2026-02-12T20:32:47.773+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO FileFormatWriter: Start to commit write Job 9c1ef5b2-cec7-43b3-82df-106f4989e840.
+[2026-02-12T20:32:47.789+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO FileFormatWriter: Write Job 9c1ef5b2-cec7-43b3-82df-106f4989e840 committed. Elapsed time: 15 ms.
+[2026-02-12T20:32:47.791+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO FileFormatWriter: Finished processing stats for write job 9c1ef5b2-cec7-43b3-82df-106f4989e840.
+[2026-02-12T20:32:47.828+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO SparkContext: Invoking stop() from shutdown hook
+[2026-02-12T20:32:47.828+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO SparkContext: SparkContext is stopping with exitCode 0.
+[2026-02-12T20:32:47.836+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO SparkUI: Stopped Spark web UI at http://649004db3ede:4040
+[2026-02-12T20:32:47.843+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+[2026-02-12T20:32:47.852+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO MemoryStore: MemoryStore cleared
+[2026-02-12T20:32:47.852+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO BlockManager: BlockManager stopped
+[2026-02-12T20:32:47.854+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO BlockManagerMaster: BlockManagerMaster stopped
+[2026-02-12T20:32:47.856+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+[2026-02-12T20:32:47.862+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO SparkContext: Successfully stopped SparkContext
+[2026-02-12T20:32:47.863+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ShutdownHookManager: Shutdown hook called
+[2026-02-12T20:32:47.863+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ShutdownHookManager: Deleting directory /tmp/spark-f9a4481f-fcbd-4286-94d4-0dd8e760165a
+[2026-02-12T20:32:47.868+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ShutdownHookManager: Deleting directory /tmp/spark-74fd0a7a-b2db-4a3f-9c97-8098f2018bd6/pyspark-1dd9d365-d34a-4c01-b495-b745fd2b7ab0
+[2026-02-12T20:32:47.873+0000] {spark_submit.py:492} INFO - 26/02/12 20:32:47 INFO ShutdownHookManager: Deleting directory /tmp/spark-74fd0a7a-b2db-4a3f-9c97-8098f2018bd6
+[2026-02-12T20:32:47.946+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-02-12T20:32:47.955+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=twitter_pipeline_2, task_id=transform_twitter_datascience, run_id=scheduled__2026-02-01T00:00:00+00:00, execution_date=20260201T000000, start_date=20260212T203240, end_date=20260212T203247
+[2026-02-12T20:32:47.994+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2026-02-12T20:32:48.009+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-02-12T20:32:48.011+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

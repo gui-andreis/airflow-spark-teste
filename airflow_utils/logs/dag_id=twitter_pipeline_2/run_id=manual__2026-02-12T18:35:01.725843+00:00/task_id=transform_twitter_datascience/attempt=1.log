@@ -1,0 +1,43 @@
+[2026-02-12T18:35:05.012+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-02-12T18:35:05.043+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: twitter_pipeline_2.transform_twitter_datascience manual__2026-02-12T18:35:01.725843+00:00 [queued]>
+[2026-02-12T18:35:05.054+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: twitter_pipeline_2.transform_twitter_datascience manual__2026-02-12T18:35:01.725843+00:00 [queued]>
+[2026-02-12T18:35:05.055+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-02-12T18:35:05.072+0000] {taskinstance.py:2330} INFO - Executing <Task(SparkSubmitOperator): transform_twitter_datascience> on 2026-02-12 18:35:01.725843+00:00
+[2026-02-12T18:35:05.084+0000] {standard_task_runner.py:64} INFO - Started process 569 to run task
+[2026-02-12T18:35:05.091+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'twitter_pipeline_2', 'transform_twitter_datascience', 'manual__2026-02-12T18:35:01.725843+00:00', '--job-id', '28', '--raw', '--subdir', 'DAGS_FOLDER/dag2.py', '--cfg-path', '/tmp/tmp2kfn6i0u']
+[2026-02-12T18:35:05.094+0000] {standard_task_runner.py:91} INFO - Job 28: Subtask transform_twitter_datascience
+[2026-02-12T18:35:05.185+0000] {task_command.py:426} INFO - Running <TaskInstance: twitter_pipeline_2.transform_twitter_datascience manual__2026-02-12T18:35:01.725843+00:00 [running]> on host 649004db3ede
+[2026-02-12T18:35:05.331+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='twitter_pipeline_2' AIRFLOW_CTX_TASK_ID='transform_twitter_datascience' AIRFLOW_CTX_EXECUTION_DATE='2026-02-12T18:35:01.725843+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-02-12T18:35:01.725843+00:00'
+[2026-02-12T18:35:05.332+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-02-12T18:35:05.346+0000] {base.py:84} INFO - Using connection ID 'spark_default' for task execution.
+[2026-02-12T18:35:05.348+0000] {spark_submit.py:341} INFO - Spark-Submit cmd: spark-submit --master yarn --name twitter_transformation --queue root.default /opt/airflow/src/spark/transformation.py --src /opt/data_lake/twitter_posts_raw --dest /opt/airflow/data/silver
+[2026-02-12T18:35:09.842+0000] {spark_submit.py:492} INFO - Exception in thread "main" org.apache.spark.SparkException: When running with master 'yarn' either HADOOP_CONF_DIR or YARN_CONF_DIR must be set in the environment.
+[2026-02-12T18:35:09.842+0000] {spark_submit.py:492} INFO - at org.apache.spark.deploy.SparkSubmitArguments.error(SparkSubmitArguments.scala:650)
+[2026-02-12T18:35:09.842+0000] {spark_submit.py:492} INFO - at org.apache.spark.deploy.SparkSubmitArguments.validateSubmitArguments(SparkSubmitArguments.scala:281)
+[2026-02-12T18:35:09.843+0000] {spark_submit.py:492} INFO - at org.apache.spark.deploy.SparkSubmitArguments.validateArguments(SparkSubmitArguments.scala:237)
+[2026-02-12T18:35:09.843+0000] {spark_submit.py:492} INFO - at org.apache.spark.deploy.SparkSubmitArguments.<init>(SparkSubmitArguments.scala:122)
+[2026-02-12T18:35:09.843+0000] {spark_submit.py:492} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2$$anon$3.<init>(SparkSubmit.scala:1094)
+[2026-02-12T18:35:09.843+0000] {spark_submit.py:492} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2.parseArguments(SparkSubmit.scala:1094)
+[2026-02-12T18:35:09.843+0000] {spark_submit.py:492} INFO - at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)
+[2026-02-12T18:35:09.843+0000] {spark_submit.py:492} INFO - at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1111)
+[2026-02-12T18:35:09.844+0000] {spark_submit.py:492} INFO - at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1120)
+[2026-02-12T18:35:09.844+0000] {spark_submit.py:492} INFO - at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+[2026-02-12T18:35:09.885+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-02-12T18:35:09.906+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/apache/spark/operators/spark_submit.py", line 157, in execute
+    self._hook.submit(self._application)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/apache/spark/hooks/spark_submit.py", line 423, in submit
+    raise AirflowException(
+airflow.exceptions.AirflowException: Cannot execute: spark-submit --master yarn --name twitter_transformation --queue root.default /opt/airflow/src/spark/transformation.py --src /opt/data_lake/twitter_posts_raw --dest /opt/airflow/data/silver. Error code is: 1.
+[2026-02-12T18:35:09.910+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=twitter_pipeline_2, task_id=transform_twitter_datascience, run_id=manual__2026-02-12T18:35:01.725843+00:00, execution_date=20260212T183501, start_date=20260212T183505, end_date=20260212T183509
+[2026-02-12T18:35:09.925+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 28 for task transform_twitter_datascience (Cannot execute: spark-submit --master yarn --name twitter_transformation --queue root.default /opt/airflow/src/spark/transformation.py --src /opt/data_lake/twitter_posts_raw --dest /opt/airflow/data/silver. Error code is: 1.; 569)
+[2026-02-12T18:35:09.963+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-02-12T18:35:09.999+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-02-12T18:35:10.001+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

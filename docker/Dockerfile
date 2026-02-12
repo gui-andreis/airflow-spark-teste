@@ -8,5 +8,7 @@ RUN apt-get update && apt-get install -y \
 
 USER airflow
 
-COPY requirements.txt /requirements.txt
+COPY --chown=airflow:0 docker/requirements.txt /requirements.txt
+
+# Instala garantindo que o airflow core não seja tocado (--upgrade-strategy only-if-needed)
 RUN pip install --no-cache-dir -r /requirements.txt

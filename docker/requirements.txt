@@ -1,1 +1,6 @@
-pyspark
+# Força a permanência na versão 2.9.3
+apache-airflow==2.9.3
+# Instala o provider do Spark compatível com a versão 2
+apache-airflow-providers-apache-spark==4.1.1
+# Outras dependências que você precise (exemplo)
+pyspark==3.4.1

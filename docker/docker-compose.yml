@@ -1,6 +1,6 @@
-version: "3.8"
 
 x-airflow-common: &airflow-common
+  platform: linux/amd64
   build:
     context: . 
     dockerfile: Dockerfile
@@ -20,7 +20,7 @@ x-airflow-common: &airflow-common
     - ../src:/opt/airflow/src
     - ../airflow_utils/hook:/opt/airflow/hook
     - ../airflow_utils/operators:/opt/airflow/operators
-    - ../data_hook:/opt/data_hook
+    - ../data_lake:/opt/data_lake
   depends_on:
     - postgres
 
@@ -54,9 +54,18 @@ services:
   airflow-init:
     <<: *airflow-common
     container_name: spark-alura-teste-airflow-init
-    user: "0:0" 
+    user: "1000:0"
     entrypoint: /bin/bash
-    command: -c "airflow db init && airflow users create --username admin --password ${AIRFLOW_PASSWORD} --firstname admin --lastname admin --role Admin --email admin@example.com"
-
+    command: 
+      - -c
+      - |
+        airflow db init && 
+        airflow users create \
+          --username admin \
+          --password "$${AIRFLOW_PASSWORD}" \
+          --firstname admin \
+          --lastname admin \
+          --role Admin \
+          --email admin@example.com
 volumes:
   spark_alura_teste_postgres_data:
