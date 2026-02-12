@@ -1,0 +1,64 @@
+[2026-02-12T16:02:17.434+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-02-12T16:02:17.453+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: twitter_pipeline.extrair_tweets scheduled__2026-02-02T00:00:00+00:00 [queued]>
+[2026-02-12T16:02:17.459+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: twitter_pipeline.extrair_tweets scheduled__2026-02-02T00:00:00+00:00 [queued]>
+[2026-02-12T16:02:17.459+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-02-12T16:02:17.468+0000] {taskinstance.py:2330} INFO - Executing <Task(TwitterOperator): extrair_tweets> on 2026-02-02 00:00:00+00:00
+[2026-02-12T16:02:17.474+0000] {standard_task_runner.py:64} INFO - Started process 183 to run task
+[2026-02-12T16:02:17.477+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'twitter_pipeline', 'extrair_tweets', 'scheduled__2026-02-02T00:00:00+00:00', '--job-id', '38', '--raw', '--subdir', 'DAGS_FOLDER/dag_test.py', '--cfg-path', '/tmp/tmphgk1mz6c']
+[2026-02-12T16:02:17.479+0000] {standard_task_runner.py:91} INFO - Job 38: Subtask extrair_tweets
+[2026-02-12T16:02:17.528+0000] {task_command.py:426} INFO - Running <TaskInstance: twitter_pipeline.extrair_tweets scheduled__2026-02-02T00:00:00+00:00 [running]> on host 905f4688aa0a
+[2026-02-12T16:02:17.599+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='twitter_pipeline' AIRFLOW_CTX_TASK_ID='extrair_tweets' AIRFLOW_CTX_EXECUTION_DATE='2026-02-02T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-02-02T00:00:00+00:00'
+[2026-02-12T16:02:17.600+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-02-12T16:02:17.600+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-02-12T16:02:17.600+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/airflow/operators/twitteroperator.py", line 33, in execute
+    with open(self.file_path, 'w') as file:
+PermissionError: [Errno 13] Permission denied: '/opt/data_hook/tweets_2026-02-02.json'
+[2026-02-12T16:02:17.608+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=twitter_pipeline, task_id=extrair_tweets, run_id=scheduled__2026-02-02T00:00:00+00:00, execution_date=20260202T000000, start_date=20260212T160217, end_date=20260212T160217
+[2026-02-12T16:02:17.616+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 38 for task extrair_tweets ([Errno 13] Permission denied: '/opt/data_hook/tweets_2026-02-02.json'; 183)
+[2026-02-12T16:02:17.649+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-02-12T16:02:17.663+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-02-12T16:02:17.665+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2026-02-12T16:05:55.298+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-02-12T16:05:55.317+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: twitter_pipeline.extrair_tweets scheduled__2026-02-02T00:00:00+00:00 [queued]>
+[2026-02-12T16:05:55.323+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: twitter_pipeline.extrair_tweets scheduled__2026-02-02T00:00:00+00:00 [queued]>
+[2026-02-12T16:05:55.323+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-02-12T16:05:55.332+0000] {taskinstance.py:2330} INFO - Executing <Task(TwitterOperator): extrair_tweets> on 2026-02-02 00:00:00+00:00
+[2026-02-12T16:05:55.337+0000] {standard_task_runner.py:64} INFO - Started process 177 to run task
+[2026-02-12T16:05:55.341+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'twitter_pipeline', 'extrair_tweets', 'scheduled__2026-02-02T00:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/dag_test.py', '--cfg-path', '/tmp/tmp_vrlmows']
+[2026-02-12T16:05:55.343+0000] {standard_task_runner.py:91} INFO - Job 3: Subtask extrair_tweets
+[2026-02-12T16:05:55.396+0000] {task_command.py:426} INFO - Running <TaskInstance: twitter_pipeline.extrair_tweets scheduled__2026-02-02T00:00:00+00:00 [running]> on host 711899c31697
+[2026-02-12T16:05:55.474+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='twitter_pipeline' AIRFLOW_CTX_TASK_ID='extrair_tweets' AIRFLOW_CTX_EXECUTION_DATE='2026-02-02T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-02-02T00:00:00+00:00'
+[2026-02-12T16:05:55.475+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-02-12T16:05:55.485+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-02-12T16:05:55.493+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+  File "/opt/airflow/operators/twitteroperator.py", line 34, in execute
+    for page in hook.run():
+  File "/opt/airflow/hook/twitterhook.py", line 55, in run
+    session = self.get_conn()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/providers/http/hooks/http.py", line 108, in get_conn
+    conn = self.get_connection(self.http_conn_id)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/hooks/base.py", line 83, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/connection.py", line 519, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `twitter_default` isn't defined
+[2026-02-12T16:05:55.495+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=twitter_pipeline, task_id=extrair_tweets, run_id=scheduled__2026-02-02T00:00:00+00:00, execution_date=20260202T000000, start_date=20260212T160555, end_date=20260212T160555
+[2026-02-12T16:05:55.503+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 3 for task extrair_tweets (The conn_id `twitter_default` isn't defined; 177)
+[2026-02-12T16:05:55.513+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-02-12T16:05:55.530+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-02-12T16:05:55.532+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

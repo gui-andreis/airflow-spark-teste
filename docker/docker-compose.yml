@@ -2,8 +2,8 @@ version: "3.8"
 
 x-airflow-common: &airflow-common
   build:
-    context: ..
-    dockerfile: docker/Dockerfile
+    context: . 
+    dockerfile: Dockerfile
   user: "${AIRFLOW_UID}:0"
   environment:
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
@@ -13,13 +13,13 @@ x-airflow-common: &airflow-common
     AIRFLOW__CORE__LOAD_EXAMPLES: "false"
     AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "true"
   volumes:
-    - ../airflow/dags:/opt/airflow/dags
-    - ../airflow/logs:/opt/airflow/logs
-    - ../airflow/plugins:/opt/airflow/plugins
+    - ../airflow_utils/dags:/opt/airflow/dags
+    - ../airflow_utils/logs:/opt/airflow/logs
+    - ../airflow_utils/plugins:/opt/airflow/plugins
     - ../data:/opt/airflow/data
     - ../src:/opt/airflow/src
-    - ../airflow/hook:/opt/airflow/hook
-    - ../airflow/operators:/opt/airflow/operators
+    - ../airflow_utils/hook:/opt/airflow/hook
+    - ../airflow_utils/operators:/opt/airflow/operators
     - ../data_hook:/opt/data_hook
   depends_on:
     - postgres
