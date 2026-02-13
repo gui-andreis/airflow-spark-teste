@@ -4,3 +4,5 @@ airflow_utils/logs/
 **/__pycache__/
 **/*.pyc
 **/__init__.py
+**/_SUCESS
+**/._SUCESS.crc

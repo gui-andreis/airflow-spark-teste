@@ -1,6 +1,4 @@
 
-
-
 # Config DB
 DB_HOST = "postgres-data"
 DB_NAME = "twitter_gold"
