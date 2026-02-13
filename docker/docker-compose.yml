@@ -14,9 +14,7 @@ x-airflow-common: &airflow-common
     AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "true"
   volumes:
     - ../airflow_utils/dags:/opt/airflow/dags
-    - ../drivers:/opt/airflow/drivers
     - ../airflow_utils/logs:/opt/airflow/logs
-    - ../airflow_utils/plugins:/opt/airflow/plugins
     - ../data:/opt/airflow/data
     - ../src:/opt/airflow/src
     - ../airflow_utils/hook:/opt/airflow/hook
