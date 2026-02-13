@@ -2,3 +2,4 @@ docker/.env
 airflow_utils/logs/
 .env
 __pycache__/
+*.pyc

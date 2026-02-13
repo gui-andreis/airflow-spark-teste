@@ -45,7 +45,7 @@ def load_parquet(tweet_df_clean, dest):#="/home/guiandreis/Airflow-nodocker-Spar
     .parquet(dest)
     
     
-def run(spark,  dest, src="/home/guiandreis/Airflow-nodocker-Spark/data_lake/twitter_posts_raw/"):
+def run(spark,  dest, src):
     df = spark.read.json(src)
     tweet_df_raw = get_tweets_data(df)
     tweet_df_clean = adjusting_columns(tweet_df_raw)

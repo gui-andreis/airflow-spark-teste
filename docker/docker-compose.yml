@@ -20,7 +20,6 @@ x-airflow-common: &airflow-common
     - ../src:/opt/airflow/src
     - ../airflow_utils/hook:/opt/airflow/hook
     - ../airflow_utils/operators:/opt/airflow/operators
-    - ../data_lake:/opt/data_lake
   depends_on:
     - postgres
 
