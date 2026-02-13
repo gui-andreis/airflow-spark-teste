@@ -185,6 +185,7 @@ This project uses a **second PostgreSQL instance** (or database container) on a 
 ---
 
 ## 📂 Project Structure
+```bash
 .
 ├── README.md
 ├── airflow_utils
@@ -212,7 +213,7 @@ This project uses a **second PostgreSQL instance** (or database container) on a 
 ├── to_sql.py
 ├── transformation.py
 └── transforming_gold.py
-
+```
 ---
 
 ## 🗄️ Table Schema (PostgreSQL)
@@ -239,7 +240,8 @@ CREATE TABLE IF NOT EXISTS gold_twitter (
     avg_eng_per_user FLOAT,
     language VARCHAR(10),
     collected_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+); 
+```
 📊 Metrics Generated in the Gold Layer
 
 The Gold layer includes analytics-ready features:
