@@ -242,28 +242,12 @@ CREATE TABLE IF NOT EXISTS gold_twitter (
     collected_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ); 
 ```
-📊 Metrics Generated in the Gold Layer
-
-The Gold layer includes analytics-ready features:
-
-engagement
-Sum of likes, replies, retweets, and quotes
-
-avg_eng_per_day
-Daily average engagement across all tweets
-
-total_tweets
-Total tweets posted by each user in the dataset
-
-avg_eng_per_user
-Average engagement per user
-
-📊 Power BI Dashboard
+## 📊 Power BI Dashboard
 
 After the ETL pipeline loads the Gold dataset into PostgreSQL, the database can be connected to Power BI for visualization and reporting.
 The dashboard can be refreshed to always retrieve the most updated data from the PostgreSQL Gold table.
-Page 1 - Tweets Overview
+# Page 1 - Tweets Engagement DashBoard
 ![Power BI Page 1](powerBIImages/Page1TweetsProjects.png)
 
-Page 2 - Engagement Analytics
+# Page 2 - User Insight & Top Tweets
 ![Power BI Page 2](powerBIImages/Page2TweetsProjects.png)
