@@ -210,9 +210,9 @@ This project uses a **second PostgreSQL instance** (or database container) on a 
 ├── sql
 │ └── create_tables.sql
 └── src
-├── to_sql.py
-├── transformation.py
-└── transforming_gold.py
+   ├── to_sql.py
+   ├── transformation.py
+   └── transforming_gold.py
 ```
 ---
 
