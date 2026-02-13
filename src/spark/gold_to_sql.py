@@ -11,8 +11,8 @@ def run(src):
     # O mode("overwrite") garante que a tabela temporária sempre tenha apenas o dado atual
     df.write \
         .format("jdbc") \
-        .option("url", "jdbc:postgresql://spark-alura-teste-postgres:5432/spark_alura_airflow") \
-        .option("dbtable", "stg_tweets") \
+        .option("url", "jdbc:postgresql://spark-postgres:5432/gold_database_tweets") \
+        .option("dbtable", "gold_tweets_table") \
         .option("user", "teste") \
         .option("password", "12345") \
         .option("driver", "org.postgresql.Driver") \
@@ -22,5 +22,5 @@ def run(src):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--src")
-    args = parser.parse_args()
+    args = parser.parse_args() 
     run(args.src)

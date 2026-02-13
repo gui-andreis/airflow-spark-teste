@@ -14,6 +14,7 @@ x-airflow-common: &airflow-common
     AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "true"
   volumes:
     - ../airflow_utils/dags:/opt/airflow/dags
+    - ../drivers:/opt/airflow/drivers
     - ../airflow_utils/logs:/opt/airflow/logs
     - ../airflow_utils/plugins:/opt/airflow/plugins
     - ../data:/opt/airflow/data
@@ -66,5 +67,17 @@ services:
           --lastname admin \
           --role Admin \
           --email admin@example.com
+  postgres-data:
+    image: postgres:15
+    container_name: postgres_data
+    environment:
+      POSTGRES_USER: teste
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: twitter_gold
+    ports:
+      - "5435:5432"
+    volumes:
+      - twitter_data:/var/lib/postgresql/data
 volumes:
   spark_alura_teste_postgres_data:
+  twitter_data: 

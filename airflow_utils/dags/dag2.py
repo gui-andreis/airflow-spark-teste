@@ -1,11 +1,18 @@
+import sys
+sys.path.append("/opt/airflow")  
+from src.spark.to_sql import gold_to_sql
+
+sys.path.append('/opt/airflow/operators')
+
 from airflow.decorators import dag
 import sys
 import pendulum
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
-from airflow.providers.postgres.operators.postgres import PostgresOperator
+from airflow.operators.python import PythonOperator
 
 
-sys.path.append('/opt/airflow/operators')
+
+
 from twitteroperator import TwitterOperator
 
 @dag(
@@ -40,26 +47,12 @@ def pipeline_twitter():
     ],
     verbose=True)
     
-    gold_to_stg = SparkSubmitOperator(
-        task_id="gold_to_stg",
-        application="/opt/airflow/src/spark/gold_to_sql.py",
-        jars="/opt/airflow/drivers/postgresql-42.2.23.jar", 
-        application_args=["--src", "/opt/airflow/data/gold"]
-    )
-    
-    stg_to_final = PostgresOperator(
-        task_id="stg_to_final",
-        postgres_conn_id="postgres_default", # Configure essa conexão na UI do Airflow
-        sql="""
-            INSERT INTO tweets_final (user_id, tweet_id, engagement, created_date)
-            SELECT user_id, tweet_id, engagement, created_date FROM stg_tweets
-            ON CONFLICT (tweet_id) 
-            DO UPDATE SET engagement = EXCLUDED.engagement;
-        """
+    gold_to_SQL = PythonOperator(
+        task_id="gold_to_SQL",
+        python_callable=gold_to_sql  # roda a função main do seu to_sql.py
     )
     
 
     
-    extrair_tweets >> twitter_transform >> twitter_gold
-
+    extrair_tweets >> twitter_transform >> twitter_gold >> gold_to_SQL
 dag = pipeline_twitter()
